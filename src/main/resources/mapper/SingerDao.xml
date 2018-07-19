@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.dao.SingerDao">
+    <insert id="addSinger" parameterType="singer" useGeneratedKeys="true" keyProperty="id">
+      INSERT INTO singer (name,style_id) values (#{name},#{style.id})
+    </insert>
+
+    <update id="updateSinger" parameterType="singer">
+        update singer
+        <set>
+            <if test="name!=null">name=#{name},</if>
+            <if test="style!=null and style.id=null">style_id=#{style.id}</if>
+        </set>
+        where id=#{id}
+    </update>
+
+    <delete id="deleteSingerById" parameterType="int">
+        delete from singer where id=#{id}
+    </delete>
+
+    <resultMap id="singerMap" type="singer">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <association property="style" javaType="com.sc.entity.Style" column="style_id" select="com.sc.dao.StyleDao.getStyleById"/>
+    </resultMap>
+
+    <select id="getSingerById" parameterType="int" resultMap="singerMap">
+        select * from singer where id=#{id}
+    </select>
+
+    <select id="getSingers" resultType="singer" resultMap="singerMap">
+        select * from singer;
+    </select>
+</mapper>

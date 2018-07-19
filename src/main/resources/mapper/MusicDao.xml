@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.dao.MusicDao">
+
+
+
+    <insert id="addMusic" parameterType="music" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO music(
+          name,
+          create_time,
+          music_url,
+          music_img_url,
+          category_id,
+          source_id,
+          singer_id,
+          album_id
+        ) VALUES (
+          #{name},
+          #{createTime},
+          #{musicUrl},
+          #{musicImgUrl},
+          #{category.id},
+          #{source.id},
+          #{singer.id},
+          #{album.id}
+        )
+
+    </insert>
+
+
+</mapper>
