@@ -18,5 +18,6 @@
 </head>
 <body>
     <h1>嘿嘿嘿!这里是首页</h1>
+    <a href="${pageContext.request.contextPath}/test">test</a>
 </body>
 </html>
