@@ -5,6 +5,21 @@
 <mapper namespace="com.sc.dao.MusicDao">
 
 
+    <resultMap id="musicMap" type="music">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="create_time" property="createTime"/>
+        <result column="music_url" property="musicUrl"/>
+        <result column="music_img_url" property="musicImgUrl"/>
+        <association property="category" javaType="category" column="category_id" select="com.sc.dao.CategoryDao.getCategoryById"/>
+        <association property="source" javaType="source" column="source_id" select="com.sc.dao.SourceDao.getSourceById"/>
+        <association property="singer" javaType="singer" column="singer_id" select="com.sc.dao.SingerDao.getSingerById"/>
+        <association property="album" javaType="album" column="album_id" select="com.sc.dao.AlbumDao.getAlbumById"/>
+    </resultMap>
+    
+    <select id="getMusicById" resultMap="musicMap">
+        SELECT * FROM music WHERE id=#{id}
+    </select>
 
     <insert id="addMusic" parameterType="music" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO music(

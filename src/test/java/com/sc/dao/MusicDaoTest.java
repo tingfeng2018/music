@@ -3,6 +3,8 @@ package com.sc.dao;
 import com.sc.base.BaseTest;
 import com.sc.entity.*;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
@@ -16,8 +18,18 @@ import static org.junit.Assert.*;
  */
 public class MusicDaoTest extends BaseTest {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(MusicDaoTest.class);
+
     @Autowired
     private MusicDao musicDao;
+
+    @Test
+    public void testGetMusicById(){
+
+        Music music = musicDao.getMusicById(3);
+
+        LOGGER.info("musci=={}",music);
+    }
 
     @Test
     public void addMusic() {

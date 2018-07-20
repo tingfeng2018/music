@@ -7,5 +7,9 @@
     <select id="getSources" resultType="source">
         SELECT * FROM source
     </select>
+
+    <select id="getSourceById" parameterType="int" resultType="source">
+        SELECT * FROM source WHERE id=#{id}
+    </select>
     
 </mapper>

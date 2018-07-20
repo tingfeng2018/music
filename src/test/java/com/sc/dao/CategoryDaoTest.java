@@ -3,6 +3,8 @@ package com.sc.dao;
 import com.sc.base.BaseTest;
 import com.sc.entity.Category;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -16,6 +18,8 @@ import static org.junit.Assert.*;
  */
 public class CategoryDaoTest extends BaseTest {
 
+    private static final Logger LOG = LoggerFactory.getLogger(CategoryDaoTest.class);
+
     @Autowired
     private CategoryDao categoryDao;
 
@@ -24,7 +28,6 @@ public class CategoryDaoTest extends BaseTest {
     public void addCategory() {
         Category category = new Category();
         category.setName("摇滚_");
-
         categoryDao.addCategory(category);
     }
 
@@ -38,13 +41,15 @@ public class CategoryDaoTest extends BaseTest {
 
     @Test
     public void deleteCategoryById() {
+
         categoryDao.deleteCategoryById(1001);
+
     }
 
     @Test
     public void getCategoryById() {
         Category category = categoryDao.getCategoryById(1000);
-        System.out.println(category);
+        LOG.info("category={}",category);
     }
 
     @Test

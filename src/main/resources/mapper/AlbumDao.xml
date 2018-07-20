@@ -8,4 +8,8 @@
         SELECT * FROM album
     </select>
 
+    <select id="getAlbumById" parameterType="int" resultType="album">
+      SELECT * FROM album WHERE id=#{id}
+    </select>
+
 </mapper>

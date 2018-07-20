@@ -13,4 +13,11 @@ public interface AlbumDao {
 
     Album getAlbums();
 
+    /**
+     * 根据专辑Id获取专辑信息
+     * @param id
+     * @return
+     */
+    Album getAlbumById(Integer id);
+
 }

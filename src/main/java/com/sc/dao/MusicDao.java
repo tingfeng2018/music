@@ -14,5 +14,13 @@ public interface MusicDao {
 
     void addMusic(Music music);
 
+    /**
+     * 通过ID查询音乐详情
+     * @param id
+     * @return
+     */
+    Music getMusicById(Integer id);
+
+
 
 }
